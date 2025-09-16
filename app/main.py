@@ -1,9 +1,10 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import httpx
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.templating import Jinja2Templates
 import os
 
 app = FastAPI()
@@ -21,14 +22,14 @@ BASE_URL1 = "https://api.openweathermap.org/data/2.5/weather";
 BASE_URL2 = "https://api.openweathermap.org/data/2.5/forecast";
 BASE_URL3 = "https://api.openweathermap.org/data/2.5/air_pollution";
 
-static_dir = os.path.join(os.path.dirname(__file__), "..", "static")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
-app.mount("/static", StaticFiles(directory=static_dir), name="static")
+templates = Jinja2Templates(directory="templates")
 
-# Root route → serve index.html
-@app.get("/")
-async def serve_index():
-    return FileResponse(os.path.join("static", "dashboard.html"))
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("dashboard.html", {"request": request})
+ 
 
 
 @app.get("/weather_current/{city}")

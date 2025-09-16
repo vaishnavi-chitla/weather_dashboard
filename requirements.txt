@@ -2,3 +2,5 @@ fastapi
 uvicorn 
 uvicorn[standard]
 httpx
+jinja2
+gunicorn
