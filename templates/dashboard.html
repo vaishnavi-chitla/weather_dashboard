@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Weather Dashboard</title>
+    <link rel="stylesheet" href="../static/dashboard.css">
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" 
+  />
+  <link rel="icon" type="image" href="../static/images/sun.png">
+</head>
+<body>
+    <div id="searchbar" class="searchbar">
+        <img id = "headingIcon" src="../static/images/10127236.png" height="70px" width="70px">
+        <h2 id="liveweather">liveweather.com</h2>
+        <div class="searchbarParentDiv">
+            <input type="text" class="inputfeild" placeholder="Search City" >
+            <i class="fa-solid fa-magnifying-glass" onclick="getWeather()"></i>
+        </div>
+        <div id="loader" class="loader"></div>
+        <h3 id="output_msg"></h3>
+    </div>
+    <div id="error_msg" style="display: none;">
+        <h2 id="msg_1">City Not Found !</h2>
+    </div>
+    <div id="mainContentParentDiv" class="mainContentParentDiv" style="display: none;">
+        <div id = "leftDiv" class="leftDiv">
+            <div class="leftDivHeading">Coming 4 days</div>
+            <div class="firstday leftchild">
+                <div class="forecastRow">
+                    <div class="icontemp">
+                        <img id="day_icon_1" src="" alt="Weather Icon" width="70" height="70">
+                        <h5 id="day_temp_1"></h5>
+                    </div>
+                    <h4 id="day_name_1" style="padding-left: 30px;"></h4>
+                    <h4 id="date_1" style="padding-right: 30px;"></h4>
+                </div>
+            </div>
+            <div class="secondday leftchild">
+                <div class="forecastRow">
+                    <div class="icontemp">
+                        <img id="day_icon_2" src="" alt="Weather Icon" width="70" height="70">
+                        <h5 id="day_temp_2"></h5>
+                    </div>
+                    <h4 id="day_name_2" style="padding-left: 30px;"></h4>
+                    <h4 id="date_2" style="padding-right: 30px;"></h4>
+                </div>
+            </div>
+            <div class="thirdday leftchild">
+                <div class="forecastRow">
+                    <div class="icontemp">
+                        <img id="day_icon_3" src="" alt="Weather Icon" width="70" height="70">
+                        <h5 id="day_temp_3"></h5>
+                    </div>
+                    <h4 id="day_name_3" style="padding-left: 30px;"></h4>
+                    <h4 id="date_3" style="padding-right: 30px;"></h4>
+                </div>
+            </div>
+            <div class="fourthday leftchild">
+                <div class="forecastRow">
+                    <div class="icontemp">
+                        <img id="day_icon_4" src="" alt="Weather Icon" width="70" height="70">
+                        <h5 id="day_temp_4"></h5>
+                    </div>
+                    <h4 id="day_name_4" style="padding-left: 30px;"></h4>
+                    <h4 id="date_4" style="padding-right: 30px;"></h4>
+                </div>
+            </div>
+        </div>
+        <div class="rightDiv">
+            <div class="current rightchild">
+                <h1 id="cityName"></h1>
+                <h1 id="cityTemp"></h1>
+                <div class="desc_and_img">
+                    <h1 id="cityDescription"></h1>
+                    <img id="weatherIcon" src="" alt="Weather Icon" width="80px" height="80px">
+                </div>
+                <div class="todayDiv">
+                    <div class="todaydate todaydetails">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <h5 id="tdate">Date</h5>
+                </div>
+                <div class="todaytime todaydetails">
+                    <i class="fa-solid fa-clock"></i>
+                    <h5 id="ttime">Time</h5>
+                </div>
+                </div>
+            </div>
+            <div class="otherinfo rightchild">
+                <div class="AQI rowTwoDiv">
+                    
+                    <div class="air_cont">
+                        <img src="../static/images/wind2.png" alt="" width="70px" height="70px">
+                        <h5 id="AQI_heading"></h5>
+                        <p id="AQI_desc">Good</p>
+                    </div>
+                </div>
+                <div class="sunRise rowTwoDiv">
+                    <div class="sunriseDiv">
+                        <img src="../static/images/sun.png" alt="" width="60px">
+                        <div class="sunriseCol">
+                            <h3>Sunrise</h3>
+                            <h3 id="sunrise_time"></h3>
+                        </div>
+                    </div>
+                    <div class="sunsetDiv">
+                        <img src="../static/images/moon.png" alt="" width="60px">
+                        <div sunsetCol>
+                            <h3>Sunset</h3>
+                            <h3 id="sunset_time"></h3>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+
+    </div>
+    <script src="../static/index.js"></script>
+</body>
+</html>
