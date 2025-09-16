@@ -1,5 +1,5 @@
-
-BASE_URL_FAPI = "http://127.0.0.1:8000";
+BASE_URL_FAPI = "https://weather-dashboard-3-lo3p.onrender.com"
+//BASE_URL_FAPI = "http://127.0.0.1:8000";
 
 function formatLocalTime(timestamp, timezoneOffset) {
   let utcDate = new Date((timestamp + timezoneOffset) * 1000);
