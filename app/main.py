@@ -28,7 +28,7 @@ app.mount("/static", StaticFiles(directory=static_dir), name="static")
 # Root route → serve index.html
 @app.get("/")
 async def serve_index():
-    return FileResponse(os.path.join("static", "index.html"))
+    return FileResponse(os.path.join("static", "dashboard.html"))
 
 
 @app.get("/weather_current/{city}")
